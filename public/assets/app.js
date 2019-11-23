@@ -5,7 +5,7 @@ const buildEvent = ({id, title}) => {
   //add event listeners on eventLink classname; PASS DOWN EVENT ID
   eventElem.innerHTML = `
   <p>
-    <a class="eventLink" data-eventtitle = "${title}" data-eventid="${id}">${title}</a>
+    <a href="./event.html" class="eventLink" data-eventtitle = "${title}" data-eventid="${id}">${title}</a>
   </p>
   <br>
   `
@@ -47,5 +47,8 @@ document.addEventListener('click', e=>{
     }
   }
 })
+//Loading a new page for events proves difficult;
+// let's try and just swap out ALL the container content and keep everything to index.html.
+
 
 //LOADING EVENT PAGE
