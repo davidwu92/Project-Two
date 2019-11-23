@@ -4,5 +4,5 @@ module.exports = (sequelize, Model, DataTypes) => {
   List.init({
     title: DataTypes.STRING
   },{sequelize, modelName: 'event'})
-  return List
+  return Event
 }
