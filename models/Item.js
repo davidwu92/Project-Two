@@ -5,6 +5,7 @@ module.exports = (sequelize, Model, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     date: DataTypes.DATE,
+    contact: DataTypes.STRING,
     isReturned: {type: DataTypes.BOOLEAN, defaultValue:false}
   }, { sequelize, modelName: 'item'})
 
