@@ -1,12 +1,11 @@
 //app.js
 const buildEvent = ({id, title}) => {
-  console.log(id)
-  console.log(title)
   let eventElem = document.createElement('div')
-  event.className = "eventLink" //add event listeners on eventLink classname; PASS DOWN EVENT ID
+  // eventElem.className = "eventLink"
+  //add event listeners on eventLink classname; PASS DOWN EVENT ID
   eventElem.innerHTML = `
   <p>
-    <a data-eventId="${id}">${title}</a>
+    <a class="eventLink" data-eventtitle = "${title}" data-eventid="${id}">${title}</a>
   </p>
   <br>
   `
@@ -33,3 +32,20 @@ document.getElementById('submitEvent').addEventListener('click', e=>{
   })
   .catch(e=>console.log(e))
 })
+
+//CLICKING AN EVENT LINK
+let eventInfo = {} 
+document.addEventListener('click', e=>{
+  if (e.target.className === "eventLink") {
+    let eTitle = e.target.dataset.eventtitle
+    let eId = e.target.dataset.eventid
+    console.log(eId)
+    console.log(eTitle)
+    eventInfo = {
+      eTitle,
+      eId
+    }
+  }
+})
+
+//LOADING EVENT PAGE
