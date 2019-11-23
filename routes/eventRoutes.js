@@ -6,7 +6,13 @@ module.exports = app => {
     Event.create(req.body)
         .then(() => {
           res.sendStatus(200)
-          .catch(e => console.log(e))
         })
+        .catch(e => console.log(e))
+  })
+
+  app.get('/event', (req, res) => {
+    Event.findAll()
+    .then(events => res.json(events))
+    .catch(e => console.log(e))
   })
 }
