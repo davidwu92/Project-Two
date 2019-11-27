@@ -7,21 +7,35 @@ module.exports = app => {
 
 // keep this for tests
 const Dummy ={
-  color: ['black', 'red', 'blue', 'white'],
-  titleWords: ['if', 'ok', 'phone', 'mom', 'fish'],
+  color: ['black', 'red', 'blue', 'white', 'green'],
+  titleWords: ['wallet', 'watch', 'phone', 'glasses', 'keys'],
+  model: ['small', 'gucci', 'large', 'old', 'new'],
+  contacts:['paul@gmail.com', 'michelle@gmail.com', 'david@gmail.com', 'kamlesh@gmail.com', 'jawed@gmail.com']
+
 }
       // get all Items that match search
   app.post('/items', (req, res) => {
     // able to get the data from mySQL
-    console.log(req.body.term)
-    Item.findAll({
-      where:{
-      description: {
-                [Op.like]: `%${req.body.term}%`
-            }
+
+   let potentials = []
+    if (req.body.keywords) {
+      potentials.push({
+          description: {
+            [Op.or]: req.body.keywords.map(keyword => ({ [Op.like]: keyword }))
+          },
+       })
     }
+    if (req.body.title) {
+      potentials.push({
+         title: { [Op.like]: req.body.title }
+       })
     }
-      )
+   
+   Item.findAll({ where: {
+     eventId: req.body.eventId,
+    [Op.or]: potentials
+     }
+    })
       .then(items => {
         // express gives us the simple data that we are looking for
         res.json(items)
@@ -43,7 +57,10 @@ const Dummy ={
     for (let i =0; i<10;i++){
       Item.create({
         title: Dummy.titleWords[Math.floor(Math.random()*5)],
-        description: Dummy.color[Math.floor(Math.random()*4)] +Dummy.color[Math.floor(Math.random()*4)] +Dummy.titleWords[Math.floor(Math.random()*5)]
+        description: Dummy.model[Math.floor(Math.random()*5)] + Dummy.color[Math.floor(Math.random()*5)],
+        contact: Dummy.contacts[Math.floor(Math.random()*5)]
+
+
       }).then(data=>res.json(data)).catch(err=>console.log(err))
     }
     
