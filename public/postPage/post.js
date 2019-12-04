@@ -1,47 +1,8 @@
-// going to delete some of this code
-//app.js
-// const buildEvent = (events) => {
-//   document.getElementById('eventList').innerHTML = ''
-//       events.forEach(event => {
-//   let eventElem = document.createElement('div')
-//   eventElem.innerHTML = `
-//   <p>
-//     <a href = "./eventPage/event.html" class="eventLink" data-eventtitle = "${event.title}" data-eventid="${event.id}">${event.title}</a>
-//   </p>
-//   <br>
-//   `
-//     document.getElementById('eventList').append(eventElem)
-//       })
-//   // eventElem.className = "eventLink"
-//   //add event listeners on eventLink classname; PASS DOWN EVENT ID
-// }
-
-
-//GET REQUEST FOR EVENTS
-// let showEvents = () => {
-// axios.get('/event')
-//   .then(({ data })=>{
-//     // data.forEach(event => {
-//     //   storeEvents(event)
-//     // })
-//     buildEvent(data)
-//   })
-//   .catch(e=>console.error(e))
-// }
-// showEvents()
-
-
-// var events = [];
-// let storeEvents = (eventName) => {
-
-// events.push(eventName)
-//     localStorage.setItem("eventTitle", JSON.stringify(events));
-// }
-
 
 //Submit Event
 document.getElementById('submitEvent').addEventListener('click', e=>{
   e.preventDefault()
+   let userName = localStorage.getItem('username')
    let newEvent = document.getElementById('newEvent').value
 
   let event = {
@@ -49,8 +10,8 @@ document.getElementById('submitEvent').addEventListener('click', e=>{
   }
   document.getElementById('newEvent').value = ""
 
-// too prevent empty events being created
-if (newEvent === '') {
+// too prevent empty events being created or people not logged in
+if (newEvent === '' || !userName) {
   console.log('please try again')
 } else {
   axios.post('/event', event)
@@ -84,7 +45,7 @@ document.addEventListener('click', e=>{
 let addItem = (item) => {
   axios.post('/item', item)
     .then(() => {
-      console.log('success')
+      postedItems()
     })
     .catch(e => console.log(e))
 }
@@ -93,24 +54,66 @@ let addItem = (item) => {
 document.getElementById('post').addEventListener('click', e => {
   e.preventDefault()
   
+  let userName = localStorage.getItem('username')
+
+  if (!userName) {
+    console.log('need to be logged in!')
+  } else {
+  
   let item = {
     title: document.getElementById('item').value,
     description: document.getElementById('description').value,
     date: document.getElementById('date').value,
-    contact: document.getElementById('email').value,
-    eventId: localStorage.getItem('eventId')
+    contact: localStorage.getItem('userEmail'),
+    eventId: localStorage.getItem('eventId'),
+    userId: localStorage.getItem('userId')
   }
       document.getElementById('item').value = ''
      document.getElementById('description').value = ''
-      document.getElementById('date').value = ''
-      document.getElementById('email').value = ''
+    document.getElementById('date').value = ''
 addItem(item)
+  }
 })
 
+// show event
+    let showEvent = () => {
+      let eventTitle = localStorage.getItem('eventTitle')
+      document.getElementById('eventNameP').textContent = eventTitle
+    }
+    showEvent()
+
+    // found items
+
+    let buildPosted = (items) => {
+    document.getElementById('postedItems').innerHTML = ''
+  items.forEach(item => {
+    let itemElem = document.createElement('div')
+    itemElem.innerHTML = `
+  <div class="card medium">
+  <h4>${item.title}</h4>
+  <p>${item.description}</p>
+  <p>${item.contact}</p>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Reveal Contact Info if this is your item<i class="material-icons right"></i></span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+  </div>
+    `
+    document.getElementById('postedItems').append(itemElem)
+  })
+}
 
 
-        let renderEvent = () => {
-            let eventTitle = localStorage.getItem('eventTitle')
-            document.getElementById('eventName').textContent = eventTitle
-          }
-          renderEvent()
+let postedItems = () => {
+
+  let userId = localStorage.getItem('userId')
+  let eventId = localStorage.getItem('eventId')
+    axios.get(`/items/${userId}/${eventId}`)
+    .then(({data })=> {
+      buildPosted(data)
+      
+    })
+    .catch(e => console.log(e))
+}
+postedItems()
+

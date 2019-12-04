@@ -14,6 +14,22 @@
   <link rel="stylesheet" href="./assets/style.css">
   <!-- Page Title -->
   <title>Home</title>
+  <!-- css for login/signup -->
+      <style>
+        span.lever {
+          background-color: #4CAF50 !important;
+        }
+      
+        .switch label .lever:after {
+          background-color: rgb(132, 214, 135);
+        }
+      
+        #rejectLogin {
+          display: none;
+          padding-left: 10px;
+          background-color: rgba(255, 0, 0, 0.698);
+        }
+      </style>
 </head>
 
 <body>
@@ -38,6 +54,20 @@
   </ul>
 
   <br>
+<div id="home" class="container">
+  <div class="row card-panel">
+    <h4>Welcome
+      <span id='greeting'></span>
+      !
+    </h4>
+    <button id="logoutBtn" class="btn waves-effect waves-light blue">
+      Sign Out
+      <i class="material-icons right">exit_to_app</i>
+    </button>
+  </div>
+</div>
+</body>
+
 
   <div class="container">
     <h1 class="center-align">Choose an Event</h1>
@@ -59,6 +89,43 @@
             <!-- <a href="#">Choose this Event</a> -->
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- test html for login feature -->
+    <div id="login" class="container">
+      <div class="row card-panel">
+        <form>
+          <div id='rejectLogin' class="card-panel red white-text">
+            Incorrect Username or Password
+          </div>
+          <div class="switch">
+            <label>
+              Sign
+              <input type="checkbox" id="method">
+              <span class="lever"></span>
+              Sign Up
+            </label>
+          </div>
+          <div class="input-field">
+            <input type="text" name="username" id="username">
+            <label for="username">Username</label>
+          </div>
+          <div id='emailDiv' class="input-field">
+            <input type="text" name="email" id="email">
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field">
+            <input type="text" name="password" id="password">
+            <label for="password">Password</label>
+          </div>
+          <div class="input-field">
+            <button id="loginBtn" class="btn waves-effect waves-light green">
+              Sign <span id="methodName">In</span>
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
