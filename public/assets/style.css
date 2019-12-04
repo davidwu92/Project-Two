@@ -1,0 +1,17 @@
+#navWrapper {
+  background-color: #ffffff;
+  color: #424242;
+}
+
+.sidenav {
+  opacity: 0.9;
+}
+
+#mobile-demo {
+  font-size: 35px;
+}
+
+.card.medium {
+  height: 200px;
+  width: 400px;
+}
