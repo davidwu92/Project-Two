@@ -27,7 +27,6 @@
         <li><a class="grey-text" href="./index.html">Events</a></li>
         <li><a class="grey-text" href="./eventPage/event.html">Lost And Found</a></li>
         <li><a class="grey-text" href="./postPage/post.html">Post</a></li>
-        <li><a class="grey-text" href="#">Sign In</a></li>
       </ul>
     </div>
   </nav>
@@ -111,6 +110,26 @@
 <!-- Footer -->
 
 
+  <!-- Materialize JS Initializations -->
+  <script>
+    // Side Nav Functionality for Mobile View
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav')
+      var instances = M.Sidenav.init(elems, {
+        inDuration: 1000,
+        outDuration: 1000
+      })
+    })
+
+    // Modal Functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.modal')
+      var instances = M.Modal.init(elems, {
+        inDuration: 1000,
+        outDuration: 1000
+      })
+    })
+  </script>
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
