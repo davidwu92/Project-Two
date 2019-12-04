@@ -1,57 +1,53 @@
-//app.js
+//post.js
 const eventList = (events) => {
   document.getElementById('eventListP').innerHTML = ''
-      events.forEach(event => {
-  let eventElem = document.createElement('div')
-  eventElem.innerHTML = `
+  events.forEach(event => {
+    let eventElem = document.createElement('div')
+    eventElem.innerHTML = `
   <p>
     <a href = "post.html" class="eventLink" data-eventtitle = "${event.title}" data-eventid="${event.id}">${event.title}</a>
   </p>
   <br>
   `
     document.getElementById('eventListP').append(eventElem)
-      })
+  })
 }
 
-
-//GET REQUEST FOR EVENTS
+//Get Request for Events
 let showList = () => {
-axios.get('/event')
-  .then(({ data })=>{
-    eventList(data)
-  })
-  .catch(e=>console.error(e))
+  axios.get('/event')
+    .then(({ data }) => {
+      eventList(data)
+    })
+    .catch(e => console.error(e))
 }
 showList()
-
-
-
 
 //Submit Event
 document.getElementById('submitEvent').addEventListener('click', e => {
   e.preventDefault()
-   let userName = localStorage.getItem('username')
-   let newEvent = document.getElementById('newEvent').value
+  let userName = localStorage.getItem('username')
+  let newEvent = document.getElementById('newEvent').value
 
   let event = {
     title: document.getElementById('newEvent').value,
   }
   document.getElementById('newEvent').value = ""
 
-// too prevent empty events being created or people not logged in
-if (newEvent === '' || !userName) {
-  console.log('please try again')
-} else {
-  axios.post('/event', event)
-  .then(() => {
-    console.log(newEvent)
-    // showEvents()
-  })
-  .catch(e => console.log(e))
-}
+  // to prevent empty events being created or people not logged in
+  if (newEvent === '' || !userName) {
+    console.log('please try again')
+  } else {
+    axios.post('/event', event)
+      .then(() => {
+        console.log(newEvent)
+        // showEvents()
+      })
+      .catch(e => console.log(e))
+  }
 })
 
-//CLICKING AN EVENT LINK
+//Clicking an Event Link
 let eventInfo = {}
 document.addEventListener('click', e => {
   if (e.target.className === "eventLink") {
@@ -68,8 +64,6 @@ document.addEventListener('click', e => {
   }
 })
 
-
-
 let addItem = (item) => {
   axios.post('/item', item)
     .then(() => {
@@ -78,50 +72,49 @@ let addItem = (item) => {
     .catch(e => console.log(e))
 }
 
-// post item
+// Post item
 document.getElementById('post').addEventListener('click', e => {
   e.preventDefault()
-  
+
   let userName = localStorage.getItem('username')
   let eventName = localStorage
 
   if (!userName && !eventName) {
     console.log('need to be logged in!')
   } else {
-  
-  let item = {
-    title: document.getElementById('item').value,
-    description: document.getElementById('description').value,
-    date: document.getElementById('date').value,
-    contact: localStorage.getItem('userEmail'),
-    eventId: localStorage.getItem('eventId'),
-    userId: localStorage.getItem('userId')
-  }
-      document.getElementById('item').value = ''
-     document.getElementById('description').value = ''
+
+    let item = {
+      title: document.getElementById('item').value,
+      description: document.getElementById('description').value,
+      date: document.getElementById('date').value,
+      contact: localStorage.getItem('userEmail'),
+      eventId: localStorage.getItem('eventId'),
+      userId: localStorage.getItem('userId')
+    }
+    document.getElementById('item').value = ''
+    document.getElementById('description').value = ''
     document.getElementById('date').value = ''
-addItem(item)
+    addItem(item)
   }
 })
 
-// show name 
-    let renderName = () => {
-      let userName= localStorage.getItem('username')
-      document.getElementById('greeting').textContent = userName
-    }
-    renderName()
+// Show name 
+let renderName = () => {
+  let userName = localStorage.getItem('username')
+  document.getElementById('greeting').textContent = userName
+}
+renderName()
 
-// show event
-    let showEvent = () => {
-      let eventTitle = localStorage.getItem('eventTitle')
-      document.getElementById('eventNameP').textContent = eventTitle
-    }
-    showEvent()
+// Show event
+let showEvent = () => {
+  let eventTitle = localStorage.getItem('eventTitle')
+  document.getElementById('eventNameP').textContent = eventTitle
+}
+showEvent()
 
-    // found items
-
-    let buildPosted = (items) => {
-    document.getElementById('postedItems').innerHTML = ''
+// Found items
+let buildPosted = (items) => {
+  document.getElementById('postedItems').innerHTML = ''
   items.forEach(item => {
     let itemElem = document.createElement('div')
     itemElem.innerHTML = `
@@ -145,24 +138,24 @@ let postedItems = () => {
   let userId = localStorage.getItem('userId')
   let eventId = localStorage.getItem('eventId')
 
-    axios.get(`/items/${userId}/${eventId}`)
-    .then(({data })=> {
+  axios.get(`/items/${userId}/${eventId}`)
+    .then(({ data }) => {
       buildPosted(data)
-      
+
     })
     .catch(e => console.log(e))
 }
 postedItems()
 
 // logout 
-          //  logout of homepage
-    document.getElementById('logoutBtn').addEventListener('click', e => {
-      localStorage.removeItem('userId')
-      localStorage.removeItem('username')
-      localStorage.removeItem('userEmail')
+//  logout of homepage
+document.getElementById('logoutBtn').addEventListener('click', e => {
+  localStorage.removeItem('userId')
+  localStorage.removeItem('username')
+  localStorage.removeItem('userEmail')
   localStorage.removeItem(`eventId`)
   localStorage.removeItem(`eventTitle`)
   window.location = '/index.html'
-    })
+})
 
 
