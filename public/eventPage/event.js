@@ -1,12 +1,13 @@
-    let renderEvent = () => {
-      let eventTitle = localStorage.getItem('eventTitle')
-      document.getElementById('eventName').textContent = eventTitle
-    }
-    renderEvent()
+//event js
+let renderEvent = () => {
+  let eventTitle = localStorage.getItem('eventTitle')
+  document.getElementById('eventName').textContent = eventTitle
+}
+renderEvent()
 
-        // working code to search for lost items Just need to find out how to search for words in no order
+// Search for lost items 
 let buildFound = (items) => {
-    document.getElementById('foundItems').innerHTML = ''
+  document.getElementById('foundItems').innerHTML = ''
   items.forEach(item => {
     let itemElem = document.createElement('div')
     itemElem.innerHTML = `
@@ -28,7 +29,7 @@ let buildFound = (items) => {
   })
 }
 
-    // search for item
+// Search for item
 let searchItem = (term) => {
   axios.post('/items', term)
     .then(({ data }) => {
@@ -37,28 +38,27 @@ let searchItem = (term) => {
     .catch(e => console.log(e))
 }
 
-// post to search for lost item
-    document.getElementById('search').addEventListener('click', e => {
-      e.preventDefault()
-      let keywords = document.getElementById('itemDesc').value.split(' ')
-      keywords = keywords.filter(word => word !== '').map(word => `%${word}%`)
-     
-      let term = {
-        eventId: localStorage.getItem('eventId') 
-      }
+// Post to search for lost item
+document.getElementById('search').addEventListener('click', e => {
+  e.preventDefault()
+  let keywords = document.getElementById('itemDesc').value.split(' ')
+  keywords = keywords.filter(word => word !== '').map(word => `%${word}%`)
 
-      if (document.getElementById('itemName').value.replace(/^\s+|\s+$|\s+(?=\s)/g, "").length) {
-        term.title =  `%${document.getElementById('itemName').value}%`
-      }
+  let term = {
+    eventId: localStorage.getItem('eventId')
+  }
 
-      if (keywords.length) {
-        term.keywords = keywords
-      }
+  if (document.getElementById('itemName').value.replace(/^\s+|\s+$|\s+(?=\s)/g, "").length) {
+    term.title = `%${document.getElementById('itemName').value}%`
+  }
 
-      
-      document.getElementById('itemName').value = ''
-      document.getElementById('itemDesc').value = ''
-      
-     searchItem(term)
-    })
-    
+  if (keywords.length) {
+    term.keywords = keywords
+  }
+
+
+  document.getElementById('itemName').value = ''
+  document.getElementById('itemDesc').value = ''
+
+  searchItem(term)
+})
