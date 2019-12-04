@@ -10,6 +10,10 @@ const User = require('./User.js')(sequelize, Model, DataTypes)
 Event.hasMany(Item)
 //Each ITEM must have one EVENT.
 Item.belongsTo(Event)
+// Each ITEM must have one USER.
+Item.belongsTo(User)
+// Each USER could have many items
+User.hasMany(Item)
 
 module.exports = {
   Event,

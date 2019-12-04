@@ -13,6 +13,7 @@ let buildFound = (items) => {
   <div class="card medium">
   <h4>${item.title}</h4>
   <p>${item.description}</p>
+  <p>${item.contact}</p>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">Reveal Contact Info if this is your item<i class="material-icons right"></i></span>
       <p><a href="#">This is a link</a></p>
@@ -38,7 +39,6 @@ let buildFound = (items) => {
 
     // search for item
 let searchItem = (term) => {
-  console.log(term)
   axios.post('/items', term)
     .then(({ data }) => {
       buildFound(data)
@@ -64,9 +64,9 @@ let searchItem = (term) => {
         term.keywords = keywords
       }
 
-      console.log(term)
+      
       document.getElementById('itemName').value = ''
       document.getElementById('itemDesc').value = ''
-        console.log(term)
+      
      searchItem(term)
     })

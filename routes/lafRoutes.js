@@ -48,10 +48,23 @@ const Dummy ={
     Item.create(req.body)
         .then(() => {
           res.sendStatus(200)
-          .catch(e => console.log(e))
         })
+        .catch(e => console.log(e))
   })
   
+  // show posted items from user
+  app.get('/items/:id/:event', (req, res) => {
+    Item.findAll({
+      where: {
+        userId: req.params.id,
+        eventId: req.params.event
+      }
+    })
+    .then(items => {
+      res.json(items)
+    })
+    .catch(e => console.log(e))
+  })
   // Keep this for dummy data test
   app.post('/createdata', (req, res)=>{
     for (let i =0; i<10;i++){
@@ -66,3 +79,5 @@ const Dummy ={
     
   })
 }
+
+
