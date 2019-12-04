@@ -1,4 +1,4 @@
-// going to delete this
+
 //app.js
 const buildEvent = (events) => {
   document.getElementById('eventList').innerHTML = ''
@@ -12,8 +12,6 @@ const buildEvent = (events) => {
   `
     document.getElementById('eventList').append(eventElem)
       })
-  // eventElem.className = "eventLink"
-  //add event listeners on eventLink classname; PASS DOWN EVENT ID
 }
 
 
@@ -21,47 +19,12 @@ const buildEvent = (events) => {
 let showEvents = () => {
 axios.get('/event')
   .then(({ data })=>{
-    console.log(data)
-    // data.forEach(event => {
-    //   storeEvents(event)
-    // })
     buildEvent(data)
   })
   .catch(e=>console.error(e))
 }
 showEvents()
 
-
-// var events = [];
-// let storeEvents = (eventName) => {
-
-// events.push(eventName)
-//     localStorage.setItem("eventTitle", JSON.stringify(events));
-// }
-
-
-// //Submit Event
-// document.getElementById('submitEvent').addEventListener('click', e=>{
-//   e.preventDefault()
-//    let newEvent = document.getElementById('newEvent').value
-
-//   let event = {
-//     title: document.getElementById('newEvent').value,
-//   }
-//   document.getElementById('newEvent').value = ""
-
-// // too prevent empty events being created
-// if (newEvent === '') {
-//   console.log('please try again')
-// } else {
-//   axios.post('/event', event)
-//   .then(() => {
-//     console.log(newEvent)
-//     showEvents()
-//   })
-//   .catch(e => console.log(e))
-// }
-// })
 
 //CLICKING AN EVENT LINK
 let eventInfo = {} 
@@ -166,12 +129,7 @@ document.addEventListener('click', e=>{
               changeViews()
             })
 
-            // const switchPage = () => {
-            //   location.assign('http://localhost:3000/dashboard.html')
-            // }
-            
             const changeViews = () => {
-              
               let username = localStorage.getItem('username')
               let userId = localStorage.getItem('userId')
         

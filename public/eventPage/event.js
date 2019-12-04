@@ -24,15 +24,6 @@ let buildFound = (items) => {
     </div>
   </div>
     `
-  //   itemElem.innerHTML = `
-  // <p>
-  //   <a class="itemLink" data-itemtitle = "${item.title}" data-itemid="${item.id}">${item.title}</a>
-  //   <p>${item.description}</p>
-  //   <p>Contact: ${item.contact}</p>
-  //   <p>Status: ${item.isReturned ? 'Claimed' : 'Unclaimed'}
-  // </p>
-  // <br>
-  // `
     document.getElementById('foundItems').append(itemElem)
   })
 }
@@ -70,3 +61,4 @@ let searchItem = (term) => {
       
      searchItem(term)
     })
+    
