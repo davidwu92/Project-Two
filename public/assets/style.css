@@ -1,17 +1,32 @@
 #navWrapper {
-  background-color: #ffffff;
-  color: #424242;
+	background-color: #ffffff;
+	color: #424242;
 }
 
 .sidenav {
-  opacity: 0.9;
+	opacity: 0.9;
 }
 
 #mobile-demo {
-  font-size: 35px;
+	font-size: 35px;
 }
 
 .card.medium {
-  height: 200px;
-  width: 400px;
+	height: 200px;
+	width: 400px;
+}
+
+/* for log in page */
+span.lever {
+	background-color: #4caf50 !important;
+}
+
+.switch label .lever:after {
+	background-color: rgb(132, 214, 135);
+}
+
+#rejectLogin {
+	display: none;
+	padding-left: 10px;
+	background-color: rgba(255, 0, 0, 0.698);
 }

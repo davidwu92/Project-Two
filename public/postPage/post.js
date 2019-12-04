@@ -1,3 +1,31 @@
+//app.js
+const eventList = (events) => {
+  document.getElementById('eventListP').innerHTML = ''
+      events.forEach(event => {
+  let eventElem = document.createElement('div')
+  eventElem.innerHTML = `
+  <p>
+    <a href = "post.html" class="eventLink" data-eventtitle = "${event.title}" data-eventid="${event.id}">${event.title}</a>
+  </p>
+  <br>
+  `
+    document.getElementById('eventListP').append(eventElem)
+      })
+}
+
+
+//GET REQUEST FOR EVENTS
+let showList = () => {
+axios.get('/event')
+  .then(({ data })=>{
+    eventList(data)
+  })
+  .catch(e=>console.error(e))
+}
+showList()
+
+
+
 
 //Submit Event
 document.getElementById('submitEvent').addEventListener('click', e => {
@@ -55,8 +83,9 @@ document.getElementById('post').addEventListener('click', e => {
   e.preventDefault()
   
   let userName = localStorage.getItem('username')
+  let eventName = localStorage
 
-  if (!userName) {
+  if (!userName && !eventName) {
     console.log('need to be logged in!')
   } else {
   
@@ -74,6 +103,13 @@ document.getElementById('post').addEventListener('click', e => {
 addItem(item)
   }
 })
+
+// show name 
+    let renderName = () => {
+      let userName= localStorage.getItem('username')
+      document.getElementById('greeting').textContent = userName
+    }
+    renderName()
 
 // show event
     let showEvent = () => {
@@ -108,6 +144,7 @@ let postedItems = () => {
 
   let userId = localStorage.getItem('userId')
   let eventId = localStorage.getItem('eventId')
+
     axios.get(`/items/${userId}/${eventId}`)
     .then(({data })=> {
       buildPosted(data)
@@ -116,4 +153,16 @@ let postedItems = () => {
     .catch(e => console.log(e))
 }
 postedItems()
+
+// logout 
+          //  logout of homepage
+    document.getElementById('logoutBtn').addEventListener('click', e => {
+      localStorage.removeItem('userId')
+      localStorage.removeItem('username')
+      localStorage.removeItem('userEmail')
+  localStorage.removeItem(`eventId`)
+  localStorage.removeItem(`eventTitle`)
+  window.location = '/index.html'
+    })
+
 
