@@ -67,7 +67,8 @@ document.addEventListener('click', e=>{
                      localStorage.setItem(`userEmail`, user.email)
                      localStorage.removeItem(`eventId`)
                     localStorage.removeItem(`eventTitle`)
-                    changeViews()
+                    window.location = './postPage/post.html'
+                    // changeViews()
                   })
             }
             
@@ -90,8 +91,9 @@ document.addEventListener('click', e=>{
                   console.log(username)
                   console.log(userId)
                   console.log(userEmail)
-              
-                changeViews()
+        
+                // changeViews()
+                window.location = './postPage/post.html'
                 } else {
                     document.getElementById('rejectLogin').style.display = 'block'
                 }
@@ -118,16 +120,7 @@ document.addEventListener('click', e=>{
               document.getElementById('password').value = ''
             })
 
-            
-          //  logout of homepage
-            document.getElementById('logoutBtn').addEventListener('click', e => {
-              localStorage.removeItem('userId')
-              localStorage.removeItem('username')
-              localStorage.removeItem('userEmail')
-              localStorage.removeItem(`eventId`)
-              localStorage.removeItem(`eventTitle`)
-              changeViews()
-            })
+
 
             const changeViews = () => {
               let username = localStorage.getItem('username')
@@ -143,11 +136,10 @@ document.addEventListener('click', e=>{
               } else {
                 document.getElementById('login').style.display = 'none'
                 document.getElementById('home').style.display = 'block'
-                document.getElementById('greeting').textContent = username
               }
             }
-            changeViews()
             document.getElementById('emailDiv').style.display = 'none'
+            // changeViews()
 
 
 //LOADING EVENT PAGE
