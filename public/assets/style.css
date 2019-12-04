@@ -17,12 +17,13 @@
 }
 
 /* for log in page */
+
 span.lever {
-	background-color: #4caf50 !important;
+	background-color: #f48fb1 !important;
 }
 
 .switch label .lever:after {
-	background-color: rgb(132, 214, 135);
+	background-color: #e91e63 !important;
 }
 
 #rejectLogin {
