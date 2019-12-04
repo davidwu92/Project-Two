@@ -1,6 +1,6 @@
 
 //Submit Event
-document.getElementById('submitEvent').addEventListener('click', e=>{
+document.getElementById('submitEvent').addEventListener('click', e => {
   e.preventDefault()
    let userName = localStorage.getItem('username')
    let newEvent = document.getElementById('newEvent').value
@@ -24,8 +24,8 @@ if (newEvent === '' || !userName) {
 })
 
 //CLICKING AN EVENT LINK
-let eventInfo = {} 
-document.addEventListener('click', e=>{
+let eventInfo = {}
+document.addEventListener('click', e => {
   if (e.target.className === "eventLink") {
     let eTitle = e.target.dataset.eventtitle
     let eId = e.target.dataset.eventid
@@ -39,8 +39,8 @@ document.addEventListener('click', e=>{
     }
   }
 })
-    
-  
+
+
 
 let addItem = (item) => {
   axios.post('/item', item)
