@@ -40,31 +40,31 @@
 
 
 //Submit Event
-document.getElementById('submitEvent').addEventListener('click', e=>{
+document.getElementById('submitEvent').addEventListener('click', e => {
   e.preventDefault()
-   let newEvent = document.getElementById('newEvent').value
+  let newEvent = document.getElementById('newEvent').value
 
   let event = {
     title: document.getElementById('newEvent').value,
   }
   document.getElementById('newEvent').value = ""
 
-// too prevent empty events being created
-if (newEvent === '') {
-  console.log('please try again')
-} else {
-  axios.post('/event', event)
-  .then(() => {
-    console.log(newEvent)
-    // showEvents()
-  })
-  .catch(e => console.log(e))
-}
+  // too prevent empty events being created
+  if (newEvent === '') {
+    console.log('please try again')
+  } else {
+    axios.post('/event', event)
+      .then(() => {
+        console.log(newEvent)
+        // showEvents()
+      })
+      .catch(e => console.log(e))
+  }
 })
 
 //CLICKING AN EVENT LINK
-let eventInfo = {} 
-document.addEventListener('click', e=>{
+let eventInfo = {}
+document.addEventListener('click', e => {
   if (e.target.className === "eventLink") {
     let eTitle = e.target.dataset.eventtitle
     let eId = e.target.dataset.eventid
@@ -78,8 +78,8 @@ document.addEventListener('click', e=>{
     }
   }
 })
-    
-  
+
+
 
 let addItem = (item) => {
   axios.post('/item', item)
@@ -92,7 +92,7 @@ let addItem = (item) => {
 // post item
 document.getElementById('post').addEventListener('click', e => {
   e.preventDefault()
-  
+
   let item = {
     title: document.getElementById('item').value,
     description: document.getElementById('description').value,
@@ -100,17 +100,17 @@ document.getElementById('post').addEventListener('click', e => {
     contact: document.getElementById('email').value,
     eventId: localStorage.getItem('eventId')
   }
-      document.getElementById('item').value = ''
-     document.getElementById('description').value = ''
-      document.getElementById('date').value = ''
-      document.getElementById('email').value = ''
-addItem(item)
+  document.getElementById('item').value = ''
+  document.getElementById('description').value = ''
+  document.getElementById('date').value = ''
+  document.getElementById('email').value = ''
+  addItem(item)
 })
 
 
 
-        let renderEvent = () => {
-            let eventTitle = localStorage.getItem('eventTitle')
-            document.getElementById('eventName').textContent = eventTitle
-          }
-          renderEvent()
+let renderEvent = () => {
+  let eventTitle = localStorage.getItem('eventTitle')
+  document.getElementById('eventName').textContent = eventTitle
+}
+renderEvent()

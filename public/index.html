@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <!--Let browser know website is optimized for mobile-->
@@ -19,30 +20,27 @@
 <body>
   <!-- NavBar -->
   <nav>
-    <div class="nav-wrapper teal darken-4">
-      <a href="#!" class="brand-logo">LAF</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <div id="navWrapper" class="nav-wrapper">
+      <a href="./index.html" class="brand-logo teal-text">LAF</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons teal-text">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="./eventPage/event.html">Events</a></li>
-        <!-- testing out test.html -->
-        <li><a href="../postPage/post.html">Post</a></li>
-        <li><a href="#">Home</a></li>
+        <li><a class="grey-text" href="./index.html">Events</a></li>
+        <li><a class="grey-text" href="./eventPage/event.html">Lost And Found</a></li>
+        <li><a class="grey-text" href="./postPage/post.html">Post</a></li>
+        <li><a class="grey-text" href="#">Sign In</a></li>
       </ul>
     </div>
   </nav>
-  
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="#">Sass</a></li>
-    <li><a href="#">Components</a></li>
-    <li><a href="#">Javascript</a></li>
+  <!-- Mobile View NavBar -->
+  <ul class="sidenav teal darken-4" id="mobile-demo">
+    <li><a class="white-text center-align" href="index.html">LAF </a></li>
+    <li><a class="white-text" href="./index.html">Events</a></li>
+    <li><a class="white-text" href="./eventPage/event.html">Lost And Found</a></li>
+    <li><a class="white-text" href="./postPage/post.html">Post</a></li>
+    <li><a class="white-text" href="#">Sign Out</a></li>
   </ul>
 
   <br>
-
-  <div class="container">
-    <h1 class="center-align">Choose an Event</h1>
-  </div>
-
   <br>
 
   <!-- Event Cards -->
@@ -51,31 +49,62 @@
       <div class="col s12">
         <div class="card teal darken-3">
           <div class="card-content white-text">
-            <span id="eventName" class="card-title">EVENTS</span>
+            <span id="eventName" class="card-title center-align">Events List</span>
             <p id="date"></p>
             <p id="eventDescription"></p>
           </div>
           <div class="card-action" id="eventList">
-            <!-- <a href="#">Choose this Event</a> -->
           </div>
         </div>
       </div>
     </div>
+</div>
+
+  <!-- Footer -->
+  <footer class="page-footer teal darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        <a class="grey-text text-lighten-4 right" href="#!">© 2019 Copyright</a>
+      </div>
+    </div>
+  </footer>
 
 
+  <!-- Materialize JS Initializations -->
+  <script>
+    // Side Nav Functionality for Mobile View
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav')
+      var instances = M.Sidenav.init(elems, {
+        inDuration: 1000,
+        outDuration: 1000
+      })
+    })
 
-
-
-
-
-<!-- Footer -->
-
-
+    // Modal Functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.modal')
+      var instances = M.Modal.init(elems, {
+        inDuration: 1000,
+        outDuration: 1000
+      })
+    })
+  </script>
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Axios -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="app.js"></script>
+  <!-- Our App JavaScript -->
+  <script src="./app.js"></script>
 </body>
 
 </html>
