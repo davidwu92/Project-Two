@@ -89,7 +89,7 @@ document.getElementById('post').addEventListener('click', e => {
       let item = {
         title: document.getElementById('item').value,
         description: document.getElementById('description').value,
-        date: document.getElementById('date').value,
+        // date: document.getElementById('date').value,
         contact: localStorage.getItem('userEmail'),
         eventId: localStorage.getItem('eventId'),
         userId: localStorage.getItem('userId')
