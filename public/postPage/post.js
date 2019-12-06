@@ -4,11 +4,8 @@ const eventList = (events) => {
   events.forEach(event => {
     let eventElem = document.createElement('div')
     eventElem.innerHTML = `
-  <p>
-    <a href = "post.html" class="eventLink" data-eventtitle = "${event.title}" data-eventid="${event.id}">${event.title}</a>
-  </p>
-  <br>
-  `
+    <a href = "post.html" class="eventLink pink-text" data-eventtitle = "${event.title}" data-eventid="${event.id}">${event.title}</a>
+    `
     document.getElementById('eventListP').append(eventElem)
   })
 }

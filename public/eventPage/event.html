@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="../assets/reset.css">
   <!--Import Google Icon Font-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Import Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Custom CSS -->
@@ -21,50 +23,33 @@
   <!-- NavBar -->
   <nav>
     <div id="navWrapper" class="nav-wrapper">
-      <a href="../index.html" class="brand-logo teal-text">LAF</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons teal-text">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="grey-text" href="../index.html">Events</a></li>
-        <li><a class="grey-text" href="./event.html">Lost And Found</a></li>
-        <li><a class="grey-text" href="../postPage/post.html">Post</a></li>
-      </ul>
+      <a href="../index.html" class="brand-logo white-text">LAF</a>
     </div>
   </nav>
-  <!-- Mobile View NavBar -->
-  <ul class="sidenav teal darken-4" id="mobile-demo">
-    <li><a class="white-text center-align" href="../index.html">LAF </a></li>
-    <li><a class="white-text" href="../index.html">Events</a></li>
-    <li><a class="white-text" href="./event.html">Lost And Found</a></li>
-    <li><a class="white-text" href="../postPage/post.html">Post</a></li>
-    <li><a class="white-text" href="#">Sign Out</a></li>
-  </ul>
-
+  
   <br>
   <!-- Page Header -->
   <div class="container">
     <div class="row">
       <div class="col s12">
-        <div class="card teal darken-3 z-depth-5">
+        <div class="card z-depth-5">
           <div class="card-content">
-            <h3 id="eventName" class= "white-text center-align"></h3>
-            <h4 class="white-text center-align"><span id="numItems"></span> Items Found</h4>
-
+            <h3 id="eventName" class="pink-text center-align"></h3>
             <br>
-
             <!-- Search for Items -->
             <div class="row">
               <div class="col s12">
-                <h5 class="white-text">Search For Lost Items</h5>
+                <h4 class="pink-text center-align">Search For Lost Items</h4>
                   <form>
                     <div class="input-field">
                       <label for="itemName">Item Missing</label>
-                      <input id="itemName" type="text" class="white-text validate">
+                      <input id="itemName" type="text" class="validate">
                     </div>
                     <div class="input-field">
                       <label for="itemDesc">Short description of item (ex. color, brand)</label>
-                      <input id="itemDesc" type="text" class="white-text validate">
+                      <input id="itemDesc" type="text" class="validate">
                     </div>
-                    <button id="search" class="btn waves-effect waves-light" type="submit" name="action">
+                    <button id="search" class="btn pink lighten-2 waves-effect waves-light" type="submit" name="action">
                       Search
                     </button>
                   </form>
@@ -75,39 +60,45 @@
       </div>
     </div>
 
-    <h4 class="teal-text center-align">Found Items</h4>
+    <h3 class="indigo-text center-align">Found Items</h3>
     <div id="foundItems">
     </div>
   </div>
 
   <br>
 
-
-
-  <!-- Footer -->
-  <footer class="page-footer teal darken-4" style="position:fixed;bottom:0;left:0;width:100%;padding-top:0px">
-    <div class="footer-copyright">
-      <div class="container">
-        <a class="grey-text text-lighten-4 right" href="#!">© 2019 Copyright</a>
+  <!-- Footer Nav-->
+  <footer class="page-footer pink darken-3" style="position: fixed; bottom:0; left:0; width:100%; padding-top:5px">
+    <div class="container">
+      <div class="row">
+        <div class="col s3 center-align">
+          <a class="white-text" href="../aboutPage/about.html">
+            <i class="material-icons">info_outline</i>
+            <p>About</p>
+          </a>
+        </div>
+        <div class="col s3 center-align">
+          <a class="white-text" href="../index.html">
+            <i class="material-icons">blur_on</i>
+            <p>Events</p>
+          </a>
+        </div>
+        <div class="col s3 center-align">
+          <a class="white-text" href="../postPage/post.html">
+            <i class="material-icons">add_circle_outline</i>
+            <p>Post</p>
+          </a>
+        </div>
+        <a class="white-text" href="#" id="logoutBtn">
+        <div class="col s3 center-align">
+          <i class="material-icons">exit_to_app</i>
+          <p>Sign Out</p></a>
+        </div>
       </div>
     </div>
   </footer>
 
-
-
-
-  <!-- // Side Nav Functionality for Mobile View -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var elems = document.querySelectorAll('.sidenav')
-      var instances = M.Sidenav.init(elems, {
-        inDuration: 1000,
-        outDuration: 1000
-      })
-    })
-  </script>
-
-
+<br>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Axios -->

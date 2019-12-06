@@ -11,11 +11,14 @@ let buildFound = (items) => {
   items.forEach(item => {
     let itemElem = document.createElement('div')
     itemElem.innerHTML = `
-  <div class="card medium">
-  <h4>${item.title}</h4>
-  <p>${item.description}</p>
-  <p>${item.contact}</p>
-  <p>${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}</p>
+  <div class="card-panel">
+  <h4 class="pink-text center-align">${item.title}</h4>
+    <div class="card-content">
+      <h5 class="center-align">Description:</h5>
+      <h5 class="pink-text center-align">${item.description}</h5>
+      <h5 class="center-align">Contact Info:</h5>
+     <h6 class="pink-text center-align"><a href="mailto:${item.contact}">${item.contact}</a></h6>
+    </div>
   </div>
     `
     document.getElementById('foundItems').append(itemElem)

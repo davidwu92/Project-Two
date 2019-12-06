@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="../assets/reset.css">
   <!--Import Google Icon Font-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Import Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Custom CSS -->
@@ -18,43 +20,55 @@
   <!-- NavBar -->
   <nav>
     <div id="navWrapper" class="nav-wrapper">
-      <a href="../index.html" class="brand-logo teal-text">LAF</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons teal-text">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="grey-text" href="../index.html">Events</a></li>
-        <li><a class="grey-text" href="./event.html">Lost And Found</a></li>
-        <li><a class="grey-text" href="../postPage/post.html">Post</a></li>
-      </ul>
+      <a href="../index.html" class="brand-logo white-text">LAF</a>
     </div>
   </nav>
-  <!-- Mobile View NavBar -->
-  <ul class="sidenav teal darken-4" id="mobile-demo">
-    <li><a class="white-text center-align" href="../index.html">LAF </a></li>
-    <li><a class="white-text" href="../index.html">Events</a></li>
-    <li><a class="white-text" href="./event.html">Lost And Found</a></li>
-    <li><a class="white-text" href="../postPage/post.html">Post</a></li>
-    <li><a class="white-text" href="#">Sign Out</a></li>
-  </ul>
 
-  <!-- Footer -->
-  <footer class="page-footer teal darken-4" style="position:fixed;bottom:0;left:0;width:100%;padding-top:0px">
-      <div class="footer-copyright">
-        <div class="container">
-          <a class="grey-text text-lighten-4 right" href="#!">© 2019 Copyright</a>
+  <div class="container">
+    <div class="col s12">
+        <div class="card pink lighten-2 z-depth-5">
+          <div class="card-content">
+            <h3 id="eventName" class= "white-text center-align"></h3>
+            <h4 class="white-text center-align"><span id="numItems"></span> About</h4>
+          </div>
         </div>
+  </div>
+
+  <!-- Footer Nav-->
+  <footer class="page-footer pink darken-3" style="position: fixed; bottom:0; left:0; width:100%; padding-top:5px">
+    <div class="container">
+      <div class="row">
+        <div class="col s3 center-align">
+          <a class="white-text" href="../aboutPage/about.html">
+            <i class="material-icons">info_outline</i>
+            <p>About</p>
+          </a>
+        </div>
+        <div class="col s3 center-align">
+          <a class="white-text" href="../index.html">
+            <i class="material-icons">blur_on</i>
+            <p>Events</p>
+          </a>
+        </div>
+        <div class="col s3 center-align">
+          <a class="white-text" href="../postPage/post.html">
+            <i class="material-icons">add_circle_outline</i>
+            <p>Post</p>
+          </a>
+        </div>
+        <a class="white-text" href="#" id="logoutBtn">
+          <div class="col s3 center-align">
+            <i class="material-icons">exit_to_app</i>
+            <p>Sign Out</p>
+        </a>
       </div>
+    </div>
+    </div>
   </footer>
+
 
   <!-- Materialize JS Initializations -->
   <script>
-    // Side Nav Functionality for Mobile View
-    document.addEventListener('DOMContentLoaded', function () {
-      var elems = document.querySelectorAll('.sidenav')
-      var instances = M.Sidenav.init(elems, {
-        inDuration: 1000,
-        outDuration: 1000
-      })
-    })
     // Modal Functionality
     document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.modal')
@@ -64,11 +78,13 @@
       })
     })
   </script>
+
+
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Axios -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- Our App JavaScript -->
-  <script src="./post.js"></script>  
+  <script src="./about.js"></script>  
 </body>
 </html>
