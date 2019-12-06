@@ -7,6 +7,10 @@ body {
 	background-color: #ad1357;
 }
 
+p, label {
+  letter-spacing: 1px;
+}
+
 .card.medium {
 	height: 200px;
 	width: 400px;
