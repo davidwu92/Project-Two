@@ -31,6 +31,8 @@ document.getElementById('submitEvent').addEventListener('click', e => {
   }
   document.getElementById('newEvent').value = ""
 
+
+
   // to prevent empty events being created or people not logged in
   if (newEvent === '' || !userName) {
     console.log('please try again')
@@ -47,7 +49,7 @@ document.getElementById('submitEvent').addEventListener('click', e => {
 //Clicking an Event Link
 let eventInfo = {}
 document.addEventListener('click', e => {
-  if (e.target.className === "eventLink") {
+  if (e.target.className === "eventLink pink-text") {
     let eTitle = e.target.dataset.eventtitle
     let eId = e.target.dataset.eventid
     localStorage.setItem(`eventId`, eId)
@@ -74,24 +76,29 @@ document.getElementById('post').addEventListener('click', e => {
   e.preventDefault()
 
   let userName = localStorage.getItem('username')
-  let eventName = localStorage
+  let eventName = localStorage.getItem('eventTitle')
 
-  if (!userName && !eventName) {
-    console.log('need to be logged in!')
-  } else {
-
-    let item = {
-      title: document.getElementById('item').value,
-      description: document.getElementById('description').value,
-      date: document.getElementById('date').value,
-      contact: localStorage.getItem('userEmail'),
-      eventId: localStorage.getItem('eventId'),
-      userId: localStorage.getItem('userId')
+  if (!userName || !eventName) {
+    if(!userName) {
+      M.toast({html:`You must be logged in.`})
     }
-    document.getElementById('item').value = ''
-    document.getElementById('description').value = ''
-    document.getElementById('date').value = ''
-    addItem(item)
+    if(!eventName) {
+      M.toast({html:`Please enter the event where the item was found.`})
+    }
+  } else {
+      let item = {
+        title: document.getElementById('item').value,
+        description: document.getElementById('description').value,
+        date: document.getElementById('date').value,
+        contact: localStorage.getItem('userEmail'),
+        eventId: localStorage.getItem('eventId'),
+        userId: localStorage.getItem('userId')
+      }
+      document.getElementById('item').value = ''
+      document.getElementById('description').value = ''
+      document.getElementById('date').value = ''
+      M.toast({html:`Item successfully posted!`})
+      addItem(item)
   }
 })
 
