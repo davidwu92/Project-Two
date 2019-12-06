@@ -11,17 +11,13 @@ let buildFound = (items) => {
   items.forEach(item => {
     let itemElem = document.createElement('div')
     itemElem.innerHTML = `
-  <div class="card medium">
-  <h4>${item.title}</h4>
-  <p>${item.description}</p>
-  <p>${item.contact}</p>
+  <div class="card-panel">
+  <h4 class="pink-text center-align">${item.title}</h4>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Reveal Contact Info if this is your item<i class="material-icons right"></i></span>
-      <p><a href="#">This is a link</a></p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">${item.contact}<i class="material-icons right">close</i></span>
-      <p>Please double check to see if lost item is yours before contacting</p>
+      <h5 class="center-align">Description:</h5>
+      <h5 class="pink-text center-align">${item.description}</h5>
+      <h5 class="center-align">Contact Info:</h5>
+     <h6 class="pink-text center-align"><a href="mailto:${item.contact}">${item.contact}</a></h6>
     </div>
   </div>
     `
