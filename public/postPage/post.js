@@ -96,7 +96,7 @@ document.getElementById('post').addEventListener('click', e => {
       }
       document.getElementById('item').value = ''
       document.getElementById('description').value = ''
-      document.getElementById('date').value = ''
+      // document.getElementById('date').value = ''
       M.toast({html:`Item successfully posted!`})
       addItem(item)
   }
