@@ -41,7 +41,7 @@ document.getElementById('submitEvent').addEventListener('click', e => {
     axios.post('/event', event)
       .then(() => {
         console.log(newEvent)
-        // showEvents()
+       showList()
       })
       .catch(e => console.log(e))
   }
@@ -116,21 +116,44 @@ showEvent()
 let buildPosted = (items) => {
   document.getElementById('postedItems').innerHTML = ''
   items.forEach(item => {
+    console.log(item)
     let itemElem = document.createElement('div')
+    itemElem.className = item.isReturned ? 'claimed' : 'unclaimed'
     itemElem.innerHTML = `
   <div class="card medium">
   <h4>${item.title}</h4>
-  <p>${item.description}</p>
-  <p>${item.contact}</p>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Reveal Contact Info if this is your item<i class="material-icons right"></i></span>
-      <p><a href="#">This is a link</a></p>
-    </div>
+  <p>description: ${item.description}</p>
+  <p>contact: ${item.contact}</p>
+  <br>
+  <a class="waves-effect waves-light btn-small ${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}" data-itemId = ${item.id} >${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}</a>
+  <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons delete" data-itemId = ${item.id}>
+delete</i></a>
   </div>
     `
     document.getElementById('postedItems').append(itemElem)
   })
 }
+
+let isFound = id => {
+  axios.put(`/items/${id}`)
+    .then(() => {
+      parent.className = parent.className === 'Yet to be claimed' ? '' : 'Returned to owner'
+      postedItems()
+    })
+    .catch(e => console.log(e))
+}
+// change item to found
+document.addEventListener('click', e => {
+if (e.target.className.includes('Yet to be claimed') || e.target.className.includes('Returned to owner')) {
+  let itemId = e.target.dataset.itemid
+ isFound(itemId)
+}
+
+if(e.target.className.includes('delete')) {
+  let deleteId = e.target.dataset.itemid
+  deletePost(deleteId)
+}
+})
 
 
 let postedItems = () => {
@@ -157,5 +180,17 @@ document.getElementById('logoutBtn').addEventListener('click', e => {
   localStorage.removeItem(`eventTitle`)
   window.location = '/index.html'
 })
+
+// delete a posted item
+let deletePost = (id) => {
+
+  axios.delete(`/items/${id}`)
+  .then(() => {
+    postedItems()
+  })
+  .catch(e => console.log(e))
+}
+
+
 
 

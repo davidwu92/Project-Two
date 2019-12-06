@@ -15,14 +15,7 @@ let buildFound = (items) => {
   <h4>${item.title}</h4>
   <p>${item.description}</p>
   <p>${item.contact}</p>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Reveal Contact Info if this is your item<i class="material-icons right"></i></span>
-      <p><a href="#">This is a link</a></p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">${item.contact}<i class="material-icons right">close</i></span>
-      <p>Please double check to see if lost item is yours before contacting</p>
-    </div>
+  <p>${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}</p>
   </div>
     `
     document.getElementById('foundItems').append(itemElem)
