@@ -2,12 +2,11 @@
 const buildEvent = (events) => {
   document.getElementById('eventList').innerHTML = ''
   events.forEach(event => {
-    let eventElem = document.createElement('div')
+    let eventElem = document.createElement('tr')
     eventElem.innerHTML = `
-  <p>
-    <a href = "./eventPage/event.html" class="eventLink" data-eventtitle = "${event.title}" data-eventid="${event.id}">${event.title}</a>
-  </p>
-  <br>
+    <td>
+    <a href = "./eventPage/event.html" class="eventLink pink-text" data-eventtitle = "${event.title}" data-eventid="${event.id}">${event.title}</a>
+    </td>
   `
     document.getElementById('eventList').append(eventElem)
   })
@@ -26,7 +25,7 @@ showEvents()
 //Clicking an Event
 let eventInfo = {}
 document.addEventListener('click', e => {
-  if (e.target.className === "eventLink") {
+  if (e.target.className === "eventLink pink-text") {
     let eTitle = e.target.dataset.eventtitle
     let eId = e.target.dataset.eventid
     localStorage.setItem(`eventId`, eId)

@@ -1,14 +1,10 @@
+body {
+	background-image: url('./background.png');
+	font-family: 'Bebas Neue', 'Open Sans Condensed';
+}
+
 #navWrapper {
-	background-color: #ffffff;
-	color: #424242;
-}
-
-.sidenav {
-	opacity: 0.9;
-}
-
-#mobile-demo {
-	font-size: 35px;
+	background-color: #ad1357;
 }
 
 .card.medium {
@@ -16,7 +12,51 @@
 	width: 400px;
 }
 
-/* for log in page */
+#eventName {
+	font-size: 30px;
+}
+
+.eventLink {
+	text-transform: uppercase;
+	font-size: 20px;
+}
+
+/* FORMS */
+
+/* label color */
+
+.input-field label {
+	color: #f8bbd0;
+}
+
+/* label focus color */
+
+.input-field input:focus+label {
+	color: #f8bbd0 !important;
+}
+
+/* label underline focus color */
+
+.input-field input:focus {
+	border-bottom: 1px solid #f8bbd0 !important;
+	box-shadow: 0 1px 0 0 #f8bbd0 !important;
+}
+
+/* valid color */
+
+.input-field input.valid {
+	border-bottom: 1px solid #f8bbd0 !important;
+	box-shadow: 0 1px 0 0 #f8bbd0 !important;
+}
+
+/* invalid color */
+
+.input-field input.invalid {
+	border-bottom: 1px solid #ff0000 !important;
+	box-shadow: 0 1px 0 0 #f8bbd0 !important;
+}
+
+/* Login Form */
 
 span.lever {
 	background-color: #f48fb1 !important;
