@@ -25,7 +25,7 @@ showEvents()
 //Clicking an Event
 let eventInfo = {}
 document.addEventListener('click', e => {
-  if (e.target.className === "eventLink") {
+  if (e.target.className === "eventLink pink-text") {
     let eTitle = e.target.dataset.eventtitle
     let eId = e.target.dataset.eventid
     localStorage.setItem(`eventId`, eId)
