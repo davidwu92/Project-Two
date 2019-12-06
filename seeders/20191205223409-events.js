@@ -7,17 +7,17 @@ module.exports = {
      
       return queryInterface.bulkInsert('events', [
         {
-        title: 'edc',
+        title: 'comic-con',
         createdAt: new Date(),
         updatedAt: new Date()
       },
         {
-        title: 'coachella',
+        title: 'uci Library',
         createdAt: new Date(),
         updatedAt: new Date()
       },
         {
-        title: 'lollapalooza',
+        title: 'class 1045',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -27,7 +27,7 @@ module.exports = {
         updatedAt: new Date()
       },
         {
-        title: 'tomorrowland',
+        title: 'central park new york  ',
         createdAt: new Date(),
         updatedAt: new Date()
       },
