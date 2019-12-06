@@ -96,12 +96,11 @@ const signIn = (username, password) => {
     .then(() => {
 
     })
-
     .catch(e => console.log(e))
 }
 
 
-
+// Sign In Btn Click Event
 document.getElementById('loginBtn').addEventListener('click', e => {
   e.preventDefault()
   method === 'Sign In' ? signIn(document.getElementById('username').value, document.getElementById('password').value
@@ -116,25 +115,41 @@ document.getElementById('loginBtn').addEventListener('click', e => {
 })
 
 
-
+// Sign In / Sign Up Card Display
 const changeViews = () => {
   let username = localStorage.getItem('username')
   let userId = localStorage.getItem('userId')
-
 
   console.log(username)
   console.log(userId)
 
   if (!username && !userId) {
+    //Display sign in/sign up
     document.getElementById('login').style.display = 'block'
-    // document.getElementById('home').style.display = 'none'
+
+    // Events Collapsible Card Click event if not signed in
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.collapsible')
+      var instances = M.Collapsible.init(elems, {
+        inDuration: 100,
+        outDuration: 100
+      })
+    })
   } else {
+    //Remove sign in/sign out once signed in
     document.getElementById('login').style.display = 'none'
-    // document.getElementById('home').style.display = 'block'
+    document.getElementById('accountMsg').style.display = 'none'
+
+    // Events Collapsible Card auto opens when signed in
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelector('.collapsible');
+      var instances = M.Collapsible.init(elems);
+      instances.open();
+    })
   }
 }
 document.getElementById('emailDiv').style.display = 'none'
-  changeViews()
+changeViews()
 
 
 // lost items count show
@@ -148,7 +163,7 @@ let showLost = () => {
 showLost()
 // found items count show
 let showFound = () => {
-    axios.get('/itemsfound')
+  axios.get('/itemsfound')
     .then(({ data }) => {
       document.getElementById('foundItems').innerHTML = `<h4>Total items returned ${data.length}</h4>`
     })
