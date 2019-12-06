@@ -65,6 +65,14 @@ const Dummy ={
     })
     .catch(e => console.log(e))
   })
+
+    app.put('/items/:id', (req, res) => {
+    Item.findOne({ where: { id: parseInt(req.params.id) } })
+      .then(item => item.update({ isReturned: !item.isReturned}))
+      .then(() => res.sendStatus(200))
+      .catch(e => console.error(e))
+  })
+
   // Keep this for dummy data test
   app.post('/createdata', (req, res)=>{
     for (let i =0; i<10;i++){
@@ -78,6 +86,33 @@ const Dummy ={
     }
     
   })
+
+  // test lost items count show
+  app.get('/items', (req, res) => {
+      Item.findAll({ where: { isReturned: 0}
+      })
+      .then(items => {
+        res.json(items)
+      })
+      .catch(e => console.log(e))
+  })
+  
+  app.get('/itemsfound', (req, res) => {
+      Item.findAll({ where: { isReturned: 1}
+      })
+      .then(items => {
+        res.json(items)
+      })
+      .catch(e => console.log(e))
+  })
+
+  app.delete('/items/:id', (req, res) => {
+    Item.findOne({ where: { id: req.params.id}})
+       .then(item => item.destroy())
+      .then(() => res.sendStatus(200))
+      .catch(e => console.error(e))
+  })
+
 }
 
 

@@ -127,11 +127,32 @@ const changeViews = () => {
 
   if (!username && !userId) {
     document.getElementById('login').style.display = 'block'
-    document.getElementById('home').style.display = 'none'
+    // document.getElementById('home').style.display = 'none'
   } else {
     document.getElementById('login').style.display = 'none'
-    document.getElementById('home').style.display = 'block'
+    // document.getElementById('home').style.display = 'block'
   }
 }
 document.getElementById('emailDiv').style.display = 'none'
-  // changeViews()
+  changeViews()
+
+
+// lost items count show
+let showLost = () => {
+  axios.get('/items')
+    .then(({ data }) => {
+      document.getElementById('lostItems').innerHTML = `<h4>Total items lost ${data.length}</h4>`
+    })
+    .catch(e => console.log(e))
+}
+showLost()
+// found items count show
+let showFound = () => {
+    axios.get('/itemsfound')
+    .then(({ data }) => {
+      document.getElementById('foundItems').innerHTML = `<h4>Total items returned ${data.length}</h4>`
+    })
+    .catch(e => console.log(e))
+}
+showFound()
+
