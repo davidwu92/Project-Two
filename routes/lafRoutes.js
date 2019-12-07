@@ -13,7 +13,7 @@ const Dummy ={
   contacts:['paul@gmail.com', 'michelle@gmail.com', 'david@gmail.com', 'kamlesh@gmail.com', 'jawed@gmail.com']
 
 }
-      // get all Items that match search
+    // get all Items that match search
   app.post('/items', (req, res) => {
     // able to get the data from mySQL
 
