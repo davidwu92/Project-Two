@@ -48,7 +48,7 @@ document.getElementById('submitEvent').addEventListener('click', e => {
 
 //Clicking an Event Link
 let eventInfo = {}
-document.addEventListener('click', e => {
+document.getElementById('test').addEventListener('click', e => {
   if (e.target.className === "eventLink pink-text") {
     let eTitle = e.target.dataset.eventtitle
     let eId = e.target.dataset.eventid
@@ -62,6 +62,7 @@ document.addEventListener('click', e => {
     }
   }
 })
+
 
 let addItem = (item) => {
   axios.post('/item', item)
@@ -105,7 +106,7 @@ document.getElementById('post').addEventListener('click', e => {
 // Show name 
 let renderName = () => {
   let userName = localStorage.getItem('username')
-  document.getElementById('greeting').textContent = userName
+  document.getElementById('greeting').textContent = `Welcome ${userName}!`
 }
 renderName()
 
@@ -124,13 +125,17 @@ let buildPosted = (items) => {
     let itemElem = document.createElement('div')
     itemElem.className = item.isReturned ? 'claimed' : 'unclaimed'
     itemElem.innerHTML = `
-  <div class="card medium">
-  <h4>${item.title}</h4>
-  <p>description: ${item.description}</p>
-  <p>contact: ${item.contact}</p>
+  <div class="card small">
+  <h4 class="pink-text center-align">${item.title}</h4>
+  <h5 class="center-align">description:</h5>
+  <h5 class="pink-text center-align">${item.description}</h5>
+  <h5 class="center-align">Contact Info:</h5>
+  <h5 class ="pink-text center-align"><a href="mailto:${item.contact}">${item.contact}</a></h5>
   <br>
-  <a class="waves-effect waves-light btn-small ${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}" data-itemId = ${item.id} >${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}</a>
-  <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons delete" data-itemId = ${item.id}>
+  <div class="postBtn">
+  <a class="pink lighten-1 waves-effect waves-light btn-small ${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}" data-itemId = ${item.id} >${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}</a>
+  </div>
+  <a class="btn-floating btn-small waves-effect waves-light pink darken-3"><i class="material-icons delete" data-itemId = ${item.id}>
 delete</i></a>
   </div>
     `

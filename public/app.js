@@ -37,7 +37,20 @@ document.addEventListener('click', e => {
       eId
     }
   }
+
 })
+
+// switch text content from events to search
+document.getElementById('eventName').addEventListener('click', e => {
+
+if (e.target.firstChild.textContent === 'Click to search for events') {
+ document.getElementById('eventName').innerHTML = 'events'
+} else if (e.target.firstChild.textContent === 'events') {
+  document.getElementById('eventName').innerHTML = 'Click to search for events'
+}
+
+})
+
 
 // signIn/signUp javascript
 let method = 'Sign In'
@@ -144,6 +157,7 @@ const changeViews = () => {
     document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelector('.collapsible');
       var instances = M.Collapsible.init(elems);
+      document.getElementById('eventName').innerHTML = 'events'
       instances.open();
     })
   }
@@ -156,16 +170,17 @@ changeViews()
 let showLost = () => {
   axios.get('/items')
     .then(({ data }) => {
-      document.getElementById('lostItems').innerHTML = `<h4>Total items lost ${data.length}</h4>`
+      document.getElementById('lostItems').innerHTML = `<h5 class="logo">Total items lost: ${data.length}</h5>`
     })
     .catch(e => console.log(e))
 }
 showLost()
+
 // found items count show
 let showFound = () => {
   axios.get('/itemsfound')
     .then(({ data }) => {
-      document.getElementById('foundItems').innerHTML = `<h4>Total items returned ${data.length}</h4>`
+      document.getElementById('foundItems').innerHTML = `<h5 class="logo">Total items returned: ${data.length}</h5>`
     })
     .catch(e => console.log(e))
 }
@@ -180,3 +195,4 @@ document.getElementById('logoutBtn').addEventListener('click', e => {
   localStorage.removeItem(`eventTitle`)
   window.location = '/index.html'
 })
+

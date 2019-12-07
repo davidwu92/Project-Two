@@ -24,6 +24,8 @@
   <nav>
     <div id="navWrapper" class="nav-wrapper">
       <a href="./index.html" class="brand-logo white-text">LAF</a>
+      <div id="lostItems"></div>
+      <div id="foundItems"></div>
     </div>
   </nav>
 
@@ -38,9 +40,7 @@
             <table class="striped fixed">
               <thead>
                 <tr>
-                  <th id="eventName" class="center-align white-text">
-                    Events
-                  </th>
+                  <th id="eventName" class="center-align white-text">Click to search for events</th>
                 </tr>
               </thead>
             </table>
@@ -119,9 +119,9 @@
           <i class="material-icons">add_circle_outline</i>
           <p>Post</p></a>
         </div>
-        <div class="col s3 center-align">
-            <a class="white-text" href="index.html"></a>
-            <i class="material-icons" id="logoutBtn">exit_to_app</i>
+        <a class="white-text" href="index.html"></a>
+        <div class="col s3 center-align" id="logoutBtn">
+            <i class="material-icons">exit_to_app</i>
             <p>Sign Out</p></a>       
       </div>
     </div>
@@ -137,3 +137,4 @@
 </body>
 
 </html>
+

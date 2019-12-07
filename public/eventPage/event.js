@@ -58,3 +58,13 @@ document.getElementById('search').addEventListener('click', e => {
 
   searchItem(term)
 })
+
+// logout to homepage
+document.getElementById('logoutBtn').addEventListener('click', e => {
+  localStorage.removeItem('userId')
+  localStorage.removeItem('username')
+  localStorage.removeItem('userEmail')
+  localStorage.removeItem(`eventId`)
+  localStorage.removeItem(`eventTitle`)
+  window.location = '/index.html'
+})

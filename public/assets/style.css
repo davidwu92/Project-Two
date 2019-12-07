@@ -75,3 +75,34 @@ span.lever {
 	padding-left: 10px;
 	background-color: rgba(255, 0, 0, 0.698);
 }
+
+/* delete button on post page */
+.btn-floating.btn-small.waves-effect.waves-light {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.greet {
+	text-align: center;
+	color: white;
+	font-size: 40px;
+}
+/* card size in posted items */
+.card.small {
+	height: 100%;
+	width: 100%;
+}
+
+#eventNameP {
+	color: white;
+	text-align: center;
+}
+
+.postBtn {
+	text-align: center;
+}
+
+.hideDiv {
+	height: 100px;
+}
