@@ -187,6 +187,10 @@ let showFound = () => {
 showFound()
 
 //  logout of homepage
+let signHome = () => {
+  let userName = localStorage.getItem('username')
+
+  if(userName) {
 document.getElementById('logoutBtn').addEventListener('click', e => {
   localStorage.removeItem('userId')
   localStorage.removeItem('username')
@@ -195,4 +199,12 @@ document.getElementById('logoutBtn').addEventListener('click', e => {
   localStorage.removeItem(`eventTitle`)
   window.location = '/index.html'
 })
+} else {
+  document.getElementById('signHome').textContent = 'sign in'
+}
+
+}
+signHome()
+
+
 

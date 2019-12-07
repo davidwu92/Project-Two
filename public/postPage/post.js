@@ -104,7 +104,11 @@ document.getElementById('post').addEventListener('click', e => {
 // Show name 
 let renderName = () => {
   let userName = localStorage.getItem('username')
-  document.getElementById('greeting').textContent = `Welcome ${userName}!`
+  if (userName) {
+    document.getElementById('greeting').textContent = `Welcome ${userName}!`
+  } else {
+    document.getElementById('greeting').textContent = 'Please sign in to post found items!'
+  }
 }
 renderName()
 
@@ -179,6 +183,9 @@ postedItems()
 
 // logout 
 //  logout of homepage
+let signPost = () => {
+  let userName = localStorage.getItem('username')
+  if(userName) {
 document.getElementById('logoutBtn').addEventListener('click', e => {
   localStorage.removeItem('userId')
   localStorage.removeItem('username')
@@ -187,6 +194,12 @@ document.getElementById('logoutBtn').addEventListener('click', e => {
   localStorage.removeItem(`eventTitle`)
   window.location = '/index.html'
 })
+} else {
+  document.getElementById('signPost').textContent = 'sign in'
+}
+
+}
+signPost()
 
 // delete a posted item
 let deletePost = (id) => {
