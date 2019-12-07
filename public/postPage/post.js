@@ -90,14 +90,12 @@ document.getElementById('post').addEventListener('click', e => {
       let item = {
         title: document.getElementById('item').value,
         description: document.getElementById('description').value,
-        // date: document.getElementById('date').value,
         contact: localStorage.getItem('userEmail'),
         eventId: localStorage.getItem('eventId'),
         userId: localStorage.getItem('userId')
       }
       document.getElementById('item').value = ''
       document.getElementById('description').value = ''
-      // document.getElementById('date').value = ''
       M.toast({html:`Item successfully posted!`})
       addItem(item)
   }
