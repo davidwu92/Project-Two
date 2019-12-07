@@ -11,7 +11,7 @@ let buildFound = (items) => {
   items.forEach(item => {
     let itemElem = document.createElement('div')
     itemElem.innerHTML = `
-  <div class="card-panel">
+  <div class="card-panel animated flipInX">
   <h4 class="pink-text center-align">${item.title}</h4>
     <div class="card-content">
       <h5 class="center-align">Description:</h5>

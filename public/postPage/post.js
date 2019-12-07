@@ -127,7 +127,7 @@ let buildPosted = (items) => {
     let itemElem = document.createElement('div')
     itemElem.className = item.isReturned ? 'claimed' : 'unclaimed'
     itemElem.innerHTML = `
-  <div class="card small" style="padding: 5px;" >
+  <div class="card small animated flipInX" style="padding: 5px;" >
   <h4 class="pink-text center-align">${item.title}</h4>
   <h5 class="center-align">description:</h5>
   <h5 class="pink-text center-align">${item.description}</h5>
