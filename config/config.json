@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "password",
-    "database": "laf_db",
-    "host": "127.0.0.1",
+    "username": "hmzk26a7vkbvjka8",
+    "password": "l7sn1rxacbxaihzi",
+    "database": "pkwh76jwlil98bgx",
+    "host": "ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "operatorsAliases": 1
   },
