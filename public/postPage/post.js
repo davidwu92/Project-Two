@@ -40,7 +40,7 @@ document.getElementById('submitEvent').addEventListener('click', e => {
     axios.post('/event', event)
       .then(() => {
         console.log(newEvent)
-       showList()
+        showList()
       })
       .catch(e => console.log(e))
   }
@@ -80,24 +80,24 @@ document.getElementById('post').addEventListener('click', e => {
   let eventName = localStorage.getItem('eventTitle')
 
   if (!userName || !eventName) {
-    if(!userName) {
-      M.toast({html:`You must be logged in.`})
+    if (!userName) {
+      M.toast({ html: `You must be logged in.` })
     }
-    if(!eventName) {
-      M.toast({html:`Please enter the event where the item was found.`})
+    if (!eventName) {
+      M.toast({ html: `Please enter the event where the item was found.` })
     }
   } else {
-      let item = {
-        title: document.getElementById('item').value,
-        description: document.getElementById('description').value,
-        contact: localStorage.getItem('userEmail'),
-        eventId: localStorage.getItem('eventId'),
-        userId: localStorage.getItem('userId')
-      }
-      document.getElementById('item').value = ''
-      document.getElementById('description').value = ''
-      M.toast({html:`Item successfully posted!`})
-      addItem(item)
+    let item = {
+      title: document.getElementById('item').value,
+      description: document.getElementById('description').value,
+      contact: localStorage.getItem('userEmail'),
+      eventId: localStorage.getItem('eventId'),
+      userId: localStorage.getItem('userId')
+    }
+    document.getElementById('item').value = ''
+    document.getElementById('description').value = ''
+    M.toast({ html: `Item successfully posted!` })
+    addItem(item)
   }
 })
 
@@ -127,14 +127,14 @@ let buildPosted = (items) => {
     let itemElem = document.createElement('div')
     itemElem.className = item.isReturned ? 'claimed' : 'unclaimed'
     itemElem.innerHTML = `
-  <div class="card small">
+  <div class="card small" style="padding: 5px;" >
   <h4 class="pink-text center-align">${item.title}</h4>
   <h5 class="center-align">description:</h5>
   <h5 class="pink-text center-align">${item.description}</h5>
   <h5 class="center-align">Contact Info:</h5>
   <h5 class ="pink-text center-align"><a href="mailto:${item.contact}">${item.contact}</a></h5>
   <br>
-  <div class="postBtn">
+  <div class="postBtn" style="padding: 15px;">
   <a class="pink lighten-1 waves-effect waves-light btn-small ${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}" data-itemId = ${item.id} >${item.isReturned ? 'Returned to owner' : 'Yet to be claimed'}</a>
   </div>
   <a class="btn-floating btn-small waves-effect waves-light pink darken-3"><i class="material-icons delete" data-itemId = ${item.id}>
@@ -155,15 +155,15 @@ let isFound = id => {
 }
 // change item to found
 document.addEventListener('click', e => {
-if (e.target.className.includes('Yet to be claimed') || e.target.className.includes('Returned to owner')) {
-  let itemId = e.target.dataset.itemid
- isFound(itemId)
-}
+  if (e.target.className.includes('Yet to be claimed') || e.target.className.includes('Returned to owner')) {
+    let itemId = e.target.dataset.itemid
+    isFound(itemId)
+  }
 
-if(e.target.className.includes('delete')) {
-  let deleteId = e.target.dataset.itemid
-  deletePost(deleteId)
-}
+  if (e.target.className.includes('delete')) {
+    let deleteId = e.target.dataset.itemid
+    deletePost(deleteId)
+  }
 })
 
 
@@ -175,7 +175,6 @@ let postedItems = () => {
   axios.get(`/items/${userId}/${eventId}`)
     .then(({ data }) => {
       buildPosted(data)
-
     })
     .catch(e => console.log(e))
 }
@@ -185,18 +184,18 @@ postedItems()
 //  logout of homepage
 let signPost = () => {
   let userName = localStorage.getItem('username')
-  if(userName) {
-document.getElementById('logoutBtn').addEventListener('click', e => {
-  localStorage.removeItem('userId')
-  localStorage.removeItem('username')
-  localStorage.removeItem('userEmail')
-  localStorage.removeItem(`eventId`)
-  localStorage.removeItem(`eventTitle`)
-  window.location = '/index.html'
-})
-} else {
-  document.getElementById('signPost').textContent = 'sign in'
-}
+  if (userName) {
+    document.getElementById('logoutBtn').addEventListener('click', e => {
+      localStorage.removeItem('userId')
+      localStorage.removeItem('username')
+      localStorage.removeItem('userEmail')
+      localStorage.removeItem(`eventId`)
+      localStorage.removeItem(`eventTitle`)
+      window.location = '/index.html'
+    })
+  } else {
+    document.getElementById('signPost').textContent = 'sign in'
+  }
 
 }
 signPost()
@@ -205,10 +204,10 @@ signPost()
 let deletePost = (id) => {
 
   axios.delete(`/items/${id}`)
-  .then(() => {
-    postedItems()
-  })
-  .catch(e => console.log(e))
+    .then(() => {
+      postedItems()
+    })
+    .catch(e => console.log(e))
 }
 
 

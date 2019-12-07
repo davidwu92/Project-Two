@@ -8,7 +8,7 @@ body {
 }
 
 p, label {
-  letter-spacing: 1px;
+	letter-spacing: 1px;
 }
 
 .card.medium {
@@ -17,7 +17,7 @@ p, label {
 }
 
 #eventName {
-	font-size: 30px;
+	font-size: 35px;
 }
 
 .eventLink {
@@ -77,6 +77,7 @@ span.lever {
 }
 
 /* delete button on post page */
+
 .btn-floating.btn-small.waves-effect.waves-light {
 	position: absolute;
 	top: 0;
@@ -88,7 +89,9 @@ span.lever {
 	color: white;
 	font-size: 40px;
 }
+
 /* card size in posted items */
+
 .card.small {
 	height: 100%;
 	width: 100%;
@@ -105,4 +108,13 @@ span.lever {
 
 .hideDiv {
 	height: 100px;
+}
+
+/* About page image */
+
+@media only screen and (min-width: 768px) {
+	.responsive-image{
+		width: 700px;
+		height:  400px;
+	}
 }
