@@ -35,7 +35,9 @@ document.getElementById('submitEvent').addEventListener('click', e => {
 
   // to prevent empty events being created or people not logged in
   if (newEvent === '' || !userName) {
-    console.log('please try again')
+    if (!userName) {
+      M.toast({ html: `You must be logged in.` })
+    }
   } else {
     axios.post('/event', event)
       .then(() => {
