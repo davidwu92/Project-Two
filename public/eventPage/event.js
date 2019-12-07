@@ -59,7 +59,10 @@ document.getElementById('search').addEventListener('click', e => {
   searchItem(term)
 })
 
-// logout to homepage
+//  logout of homepage
+let signEvent = () => {
+  let userName = localStorage.getItem('username')
+  if(userName) {
 document.getElementById('logoutBtn').addEventListener('click', e => {
   localStorage.removeItem('userId')
   localStorage.removeItem('username')
@@ -68,3 +71,9 @@ document.getElementById('logoutBtn').addEventListener('click', e => {
   localStorage.removeItem(`eventTitle`)
   window.location = '/index.html'
 })
+} else {
+  document.getElementById('signEvent').textContent = 'sign in'
+}
+
+}
+signEvent()
