@@ -35,10 +35,10 @@ Technologies Used for this Application:
 * Heroku
 
 <h2>Contributors</h2>
-- David Wu
-- Jawed Ekhlas
-- Kamelesh Sarki
-- Michelle Gonzalez
-- Paul Jung
+-  David Wu
+-  Jawed Ekhlas
+-  Kamelesh Sarki
+-  Michelle Gonzalez
+-  Paul Jung
 
 
