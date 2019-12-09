@@ -1,2 +1,23 @@
-# Project-Two
-Lost and Found App
+# LAF Application
+Project Two - Lost and Found App
+
+<h2>About</h2>
+This is a Lost And Found application designed for use by anyone, anywhere. Our goal is to effectively digitalize lost-and-found booths in high-traffic settings of all kinds: school campuses, airlines, hotels, concerts, festivals, etc. Our app strives to make both item postings and recollection as efficient as possible, establishing a quick and simple connections between OP and owner.
+
+<h2>How It Works</h2>
+Users should log in to add events and create postings at those events. Upon creating the posting, anyone looking for their lost items can use the app to check our database for things that sound similar to their lost item.
+
+<h2>Technologies</h2>
+
+Technologies Used for this Application:
+
+* HTML
+* CSS
+* JavaScript
+* Node
+* MySQL
+* Sequelize
+* Axios
+* Materialize
+* Github
+* Heroku
